@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .errorSpan {
+            color: red;
+        }
+
+        .correctSpan{
+            color:#4AFF22;
+        }
+    </style>
+</head>
+<body>
+Email <input type="text" id="email" onblur="valiEmail()"/><span id="emailSpan" class="errorSpan"></span><br/>
+密码<input type="text" id="pwd" onblur="vailPwd()"/><span id="pwdSpan" class="errorSpan"></span> <br/>
+确认密码<input type="text" id="cpwd" onblur="vailCpwd()"/><span id="cpwdSpan" class="errorSpan"></span><br/>
+用户名<input type="text" id="user" onblur="vailUser()"/><span id="userSpan" class="errorSpan"></span><br/>
+性别<input type="text" id="sex" onblur="valiSex()"/><span id="sexSpan" class="errorSpan"></span><br/>
+注册<input type="submit" value="注册"/>
+
+</body>
+
+<script type="text/javascript">
+    function valiEmail() {
+        var email = document.getElementById("email");
+
+        var sex = document.getElementById("sex");
+
+        if (email.value == '') {
+            document.getElementById("emailSpan").innerHTML = "不可以为空";
+        }
+
+        else {
+            var c = document.getElementById("emailSpan").className="correctSpan";
+            document.getElementById("emailSpan").innerHTML = "可以使用";
+
+        }
+    }
+
+    function vailPwd() {
+        var pwd = document.getElementById("pwd");
+        if (pwd.value == '') {
+            document.getElementById("pwdSpan").innerHTML = "不可以为空";
+        }
+
+        else {
+            var c = document.getElementById("pwdSpan").className="correctSpan";
+            document.getElementById("pwdSpan").innerHTML = "可以使用";
+        }
+    }
+
+    function vailCpwd() {
+        var cpwd = document.getElementById("cpwd");
+        if (cpwd.value == '') {
+            document.getElementById("cpwdSpan").innerHTML = "不可以为空";
+        }
+
+        else {
+            var c = document.getElementById("cpwdSpan").className="correctSpan";
+            document.getElementById("cpwdSpan").innerHTML = "可以使用";
+        }
+    }
+
+    function vailUser() {
+        var user = document.getElementById("user");
+        if (user.value == '') {
+            document.getElementById("userSpan").innerHTML = "不可以为空";
+        }
+
+        else {
+            var c = document.getElementById("userSpan").className="correctSpan";
+            document.getElementById("userSpan").innerHTML = "可以使用";
+        }
+
+    }
+
+    function valiSex() {
+        var sex = document.getElementById("sex");
+        if (sex.value == '') {
+            document.getElementById("sexSpan").innerHTML = "不可以为空";
+        }
+
+        else {
+            var c = document.getElementById("sexSpan").className="correctSpan";
+            document.getElementById("sexSpan").innerHTML = "可以使用";
+        }
+    }
+</script>
+</html>
