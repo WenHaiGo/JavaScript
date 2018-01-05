@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>非数组实现连级下拉菜单</title>
+</head>
+
+<script type="text/javascript">
+    var prov = ["山西", "河北", "河南", "山东", "江西", "浙江", "上海", "海南"];
+    var heBeiCity = ["张家口", "保定", "宣化", "天津"];
+    var sanXiCity = ["taiyuan", "大同", "大同", "统一"];
+    var heNanCity = ["郑州", "郑州", "zz ", "天津"];
+    var shanDongCity = ["qingdao", "ingda", "宣化", "天津"];
+    var zjkQu = ["区1", "区2", "区3", "区4", "区5", "区6", "区7"];
+    var bdQu = ["区1", "区2", "区3", "区4", "区5", "区6", "区7"];
+//判断省的下拉表
+    function selectProv() {
+        var p = document.getElementById("province");
+        for (i = 0; i < prov.length; i++) {
+            p.add(new Option(prov[i], i), null);
+        }
+    }
+//判断城市下拉表
+    function selectCity() {
+        var p = document.getElementById("province");
+        var c = document.getElementById("city");
+        var cityArray;
+        switch (p.value) {
+            case "0":
+                cityArray = sanXiCity;
+                break;
+            case  "1":
+                cityArray = heBeiCity;
+                break;
+            case "2":
+                cityArray = heNanCity;
+                break;
+            case "3":
+                cityArray = shanDongCity;
+                break;
+        }
+
+        c.innerHTML = "<option>--请选择--</option>";
+        for (var i = 0; i < cityArray.length; i++) {
+            c.add(new Option(cityArray[i], i), null)
+        }
+    }
+//判断区的下拉表
+    function selectBlock() {
+
+        var c = document.getElementById("city");
+        var b = document.getElementById("block");
+        var blockArray;
+        switch (c.value) {
+            case "0":
+                blockArray = zjkQu;
+                break;
+
+            case "1":
+                blockArray = bdQu;
+                break;
+        }
+
+        b.innerHTML="<option>--请选择--</option>";
+        for(i = 0;i<blockArray.length;i++)
+        {
+            b.add(new Option(blockArray[i],i));
+
+        }
+    }
+
+</script>
+<body onload="selectProv()">
+<select id="province" onchange="selectCity()">
+    <option>--请选择--</option>
+</select>
+<select id="city" onchange="selectBlock()">
+    <option>--请选择--</option>
+</select>
+<select id="block" >
+    <option>--请选择--</option>
+</select>
+</body>
+</html>
