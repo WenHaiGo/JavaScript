@@ -11,16 +11,20 @@
     var sanXiCity = ["taiyuan", "大同", "大同", "统一"];
     var heNanCity = ["郑州", "郑州", "zz ", "天津"];
     var shanDongCity = ["qingdao", "ingda", "宣化", "天津"];
-    var zjkQu = ["区1", "区2", "区3", "区4", "区5", "区6", "区7"];
-    var bdQu = ["区1", "区2", "区3", "区4", "区5", "区6", "区7"];
-//判断省的下拉表
+    var zjkQu = ["z区1", "z区2", "z区3", "区4", "区5", "区6", "区7"];
+    var bdQu = ["区11", "区21", "区31", "区41", "区5", "区6", "区7"];
+    var jcpQu = ["t区4", "t区5", "区t6", "t区7"];
+    var dtQu = ["d区4", "d区5", "d区6", "d区7"];
+
+    //判断省的下拉表
     function selectProv() {
         var p = document.getElementById("province");
         for (i = 0; i < prov.length; i++) {
             p.add(new Option(prov[i], i), null);
         }
     }
-//判断城市下拉表
+
+    //判断城市下拉表
     function selectCity() {
         var p = document.getElementById("province");
         var c = document.getElementById("city");
@@ -41,32 +45,61 @@
         }
 
         c.innerHTML = "<option>--请选择--</option>";
-        for (var i = 0; i < cityArray.length; i++) {
-            c.add(new Option(cityArray[i], i), null)
+        if (cityArray == null) {
+            alert("未定义");
         }
-    }
-//判断区的下拉表
-    function selectBlock() {
+        else {
+            for (var i = 0; i < cityArray.length; i++) {
+                c.add(new Option(cityArray[i], i), null)
+            }
+        }
 
+    }
+
+    //判断区的下拉表
+    function selectBlock() {
+        var p = document.getElementById("province");
         var c = document.getElementById("city");
         var b = document.getElementById("block");
         var blockArray;
-        switch (c.value) {
+       //为了获取市区的必须通过嵌套的判断语句来写这是比较繁琐的
+        switch (p.value) {
             case "0":
-                blockArray = zjkQu;
+                switch (c.value) {
+                    case "0":
+                        blockArray = jcpQu;
+                        break;
+
+                    case "1":
+                        blockArray = dtQu;
+                        break;
+                }
                 break;
 
             case "1":
-                blockArray = bdQu;
+                switch (c.value) {
+                    case "0":
+                        blockArray = zjkQu;
+                        break;
+                    case "1":
+                        blockArray = bdQu;
+                        break;
+                }
                 break;
-        }
 
-        b.innerHTML="<option>--请选择--</option>";
-        for(i = 0;i<blockArray.length;i++)
-        {
-            b.add(new Option(blockArray[i],i));
 
         }
+
+        b.innerHTML = "<option>--请选择--</option>";
+        if (blockArray == null) {
+            alert("未定义");
+        }
+        else {
+            for (i = 0; i < blockArray.length; i++) {
+                b.add(new Option(blockArray[i], i));
+            }
+        }
+
     }
 
 </script>
@@ -77,7 +110,7 @@
 <select id="city" onchange="selectBlock()">
     <option>--请选择--</option>
 </select>
-<select id="block" >
+<select id="block">
     <option>--请选择--</option>
 </select>
 </body>
