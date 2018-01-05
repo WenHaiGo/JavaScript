@@ -8,16 +8,34 @@
             color: red;
         }
 
-        .correctSpan{
-            color:#4AFF22;
+        .correctSpan {
+            color: #4AFF22;
         }
     </style>
+
+    <script src="js/jquery-1.8.0.min.js"></script>
+
+    <script>
+        $(function(){
+           //多选框改变默认的值
+            $("#nativePlace").val(['山东']);
+
+            $(":checkbox[name='hobby']").val(['读书','跑步'])
+        });
+    </script>
 </head>
 <body>
 Email <input type="text" id="email" onblur="valiEmail()"/><span id="emailSpan" class="errorSpan"></span><br/>
 密码<input type="text" id="pwd" onblur="vailPwd()"/><span id="pwdSpan" class="errorSpan"></span> <br/>
 确认密码<input type="text" id="cpwd" onblur="vailCpwd()"/><span id="cpwdSpan" class="errorSpan"></span><br/>
 用户名<input type="text" id="user" onblur="vailUser()"/><span id="userSpan" class="errorSpan"></span><br/>
+爱好<input type="checkbox"  name="hobby" value="读书">读书 <input type="checkbox"name="hobby"value="跑步">跑步<input type="checkbox" value="唱歌" name="hobby">唱歌<input type="checkbox" name="hobby" value="旅游">旅游
+<br>籍贯<select  id="nativePlace" >
+    <option>--请选择--</option>
+    <option value="山东">--山东--</option>
+    <option value="河北">--河北--</option>
+    <option value="河南">--河南--</option>
+</select><br>
 性别<input type="text" id="sex" onblur="valiSex()"/><span id="sexSpan" class="errorSpan"></span><br/>
 注册<input type="submit" value="注册"/>
 
@@ -34,7 +52,7 @@ Email <input type="text" id="email" onblur="valiEmail()"/><span id="emailSpan" c
         }
 
         else {
-            var c = document.getElementById("emailSpan").className="correctSpan";
+            var c = document.getElementById("emailSpan").className = "correctSpan";
             document.getElementById("emailSpan").innerHTML = "可以使用";
 
         }
@@ -47,7 +65,7 @@ Email <input type="text" id="email" onblur="valiEmail()"/><span id="emailSpan" c
         }
 
         else {
-            var c = document.getElementById("pwdSpan").className="correctSpan";
+            var c = document.getElementById("pwdSpan").className = "correctSpan";
             document.getElementById("pwdSpan").innerHTML = "可以使用";
         }
     }
@@ -59,7 +77,7 @@ Email <input type="text" id="email" onblur="valiEmail()"/><span id="emailSpan" c
         }
 
         else {
-            var c = document.getElementById("cpwdSpan").className="correctSpan";
+            var c = document.getElementById("cpwdSpan").className = "correctSpan";
             document.getElementById("cpwdSpan").innerHTML = "可以使用";
         }
     }
@@ -71,7 +89,7 @@ Email <input type="text" id="email" onblur="valiEmail()"/><span id="emailSpan" c
         }
 
         else {
-            var c = document.getElementById("userSpan").className="correctSpan";
+            var c = document.getElementById("userSpan").className = "correctSpan";
             document.getElementById("userSpan").innerHTML = "可以使用";
         }
 
@@ -84,9 +102,14 @@ Email <input type="text" id="email" onblur="valiEmail()"/><span id="emailSpan" c
         }
 
         else {
-            var c = document.getElementById("sexSpan").className="correctSpan";
+            var c = document.getElementById("sexSpan").className = "correctSpan";
             document.getElementById("sexSpan").innerHTML = "可以使用";
         }
     }
+
+
+    // function valiAge() {
+    //     var age = /^130$|
+    // }
 </script>
 </html>
